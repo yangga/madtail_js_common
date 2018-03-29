@@ -11,6 +11,14 @@ describe('number.float', function() {
       const res = LIB.number.float.round(0.00120000, -6)
       assert.equal(res, '0.0012')
     });
+    it('care big numbers', function() {        
+      const res = LIB.number.float.round(0.000000123456789, -8)
+      assert.equal(res, '0.00000012')
+    });
+    it('care big numbers2', function() {        
+      const res = LIB.number.float.round('0.00001068'*7586.43, -8)
+      assert.equal(res, '0.08102307')
+    });
   });
 
   describe('#toFixed()', function() {
