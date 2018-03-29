@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "assert": "^1.4.1",
+    "bignumber.js": "^6.0.0",
     "lodash": "^4.17.5"
   }
 }

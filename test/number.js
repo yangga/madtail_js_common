@@ -2,14 +2,25 @@ const assert = require('assert')
 const LIB = require('../index')
 
 describe('number.float', function() {
-  describe('#toFixed()', function() {
-    it('result is not string', function() {        
-      const res = LIB.number.float.toFixed(0.12345, 2)
-      assert.equal(res, 0.12)
+  describe('#round()', function() {
+    it('result is string', function() {        
+      const res = LIB.number.float.round(0.12345, -2)
+      assert.equal(res, '0.12')
     });
-    it('0 does not have decimal point', function() {        
-      const res = LIB.number.float.toFixed(0.00123, 2)
-      assert.equal(res, 0)
+    it('no 0 on tail of decimal point', function() {        
+      const res = LIB.number.float.round(0.00120000, -6)
+      assert.equal(res, '0.0012')
+    });
+  });
+
+  describe('#toFixed()', function() {
+    it('result is string', function() {        
+      const res = LIB.number.float.toFixed(0.12345, 2)
+      assert.equal(res, '0.12')
+    });
+    it('has 0 on tail of decimal point', function() {        
+      const res = LIB.number.float.toFixed(0.00120000, 6)
+      assert.equal(res, '0.001200')
     });
   });
 });
